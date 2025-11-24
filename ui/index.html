@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>ANSI HTML Tags Banner Builder v2</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body class="theme-dark">
+  <header class="toolbar">
+    <div class="group colors-group">
+      <span class="label">Colores soportados:</span>
+      <div id="colorButtons" class="color-buttons"></div>
+    </div>
+
+    <div class="group">
+      <button id="removeColorBtn" class="secondary">Quitar color</button>
+      <button id="clearBtn" class="secondary">Limpiar</button>
+    </div>
+
+    <div class="group">
+      <button id="undoBtn" class="secondary" disabled>↺ Undo</button>
+      <button id="redoBtn" class="secondary" disabled>↻ Redo</button>
+    </div>
+
+    <div class="group">
+      <button id="modeVisualBtn" class="mode-btn active" data-mode="visual">Visual</button>
+      <button id="modeCodeBtn" class="mode-btn" data-mode="code">Código</button>
+      <button id="exportTxtBtn" class="secondary">Exportar .txt</button>
+    </div>
+
+    <div class="group">
+      <button id="copyBtn" class="primary" disabled>Copiar código</button>
+    </div>
+
+    <div class="group">
+      <button id="toggleThemeBtn" class="secondary">Claro/Oscuro</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section class="editor">
+      <div class="editor-header">
+        <span id="statusIndicator" class="status">Listo</span>
+      </div>
+      <div id="visualEditor" class="editable monospace" contenteditable="true" spellcheck="false">
+        <p>Escribe o pega tu texto aquí...</p>
+      </div>
+      <textarea id="codeView" class="code-view monospace" style="display:none;" spellcheck="false"></textarea>
+    </section>
+    <aside class="help">
+      <h3>Ayuda</h3>
+      <ul>
+        <li>Selecciona texto y pulsa un color para aplicarlo.</li>
+        <li>Undo (Ctrl+Z) y Redo (Ctrl+Y o Ctrl+Shift+Z).</li>
+        <li>Modo Visual: edición enriquecida monoespaciada.</li>
+        <li>Modo Código: etiquetas exportables (&lt;red&gt;Hola&lt;/red&gt;).</li>
+        <li>Exportar .txt guarda el contenido del modo actual.</li>
+        <li>Los colores no soportados aparecen deshabilitados.</li>
+      </ul>
+    </aside>
+  </main>
+
+  <footer class="footer">
+    <small>ANSI HTML Tags Banner Builder v2 · Compatible terminal & editor · Mejoras activas</small>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
