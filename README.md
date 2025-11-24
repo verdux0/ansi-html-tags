@@ -39,19 +39,60 @@ colorama==0.4.6
 ```
 
 
-## Futuro 🚀
+# Interfaz v2 Mejorada POR IA  (Banner Builder)
+[estoy probando el poder de los agentes de github]
+<br>
+Esta versión incluye:
+- Undo/Redo (botones y atajos: Ctrl+Z / Ctrl+Y / Ctrl+Shift+Z).
+- Exportar directamente a `.txt`.
+- Modo claro/oscuro (botón Claro/Oscuro).
+- Fuente monoespaciada en modo Visual para simular terminal.
+- Validación de colores: los no soportados aparecen deshabilitados.
 
-En próximas versiones quiero añadir una interfaz gráfica sencilla que permita:
+## Uso Rápido
+1. Escribe o pega tu texto en modo Visual.
+2. Selecciona partes y aplica colores.
+3. Cambia a modo Código para ver las etiquetas `<color>...</color>`.
+4. Copia o exporta el resultado (`Copiar código` / `Exportar .txt`).
+5. Usa el string con etiquetas con tu librería para obtener ANSI real.
 
-📝 Copiar y pegar un texto.
+## Undo/Redo
+- Se guarda un snapshot cada (~250 ms) tras cambios y después de operaciones significativas.
+- Máximo histórico: 200 estados (configurable).
 
-🎨 Seleccionar áreas con el ratón.
+## Exportar .txt
+- En modo Visual: exporta conversión a tags.
+- En modo Código: exporta exactamente lo mostrado.
 
-🌈 Elegir colores desde un selector visual.
+## Validación de Colores
+`SUPPORTED_COLORS` controla qué botones están habilitados.
 
-Esto permitirá crear banners coloridos sin tocar directamente el código.
+Ejemplo dinámico:
+```js
+window.setSupportedColors(['red','green','blue']);
+```
 
+## Integración con Conversión a ANSI
+```js
+import { parseTagsToAnsi } from '../src/ansi'; // Ajusta la ruta
 
----
+const tags = window.getBannerTags();
+const ansi = parseTagsToAnsi(tags);
+console.log(ansi);
+```
 
+## Extensiones Futuras
+- Vista previa ANSI simulada.
+- Atributos: bold, underline, italic.
+- Fondo: `<red|bgBlue>Texto</red|bgBlue>`.
+- Guardar/abrir proyectos `.banner.json`.
+
+## Estructura
+```
+ui/
+  index.html
+  styles.css
+  app.js
+  README.md
+```
 
